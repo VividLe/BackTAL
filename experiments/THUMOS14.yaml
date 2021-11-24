@@ -1,0 +1,73 @@
+BASIC:
+  SEED: 38
+  WORKERS: 1
+  CREATE_OUTPUT_DIR: True
+  BACKUP_CODES: True
+  BACKUP_LIST: ['lib', 'experiments', 'tools']
+  CKPT_DIR: 'ckpt/THUMOS14/'
+  SUFFIX: '_THUMOS14'
+  SHOW_CFG: False
+  VERBOSE: True
+  PIN_MEMORY: True
+  CHECKPOINT_DIGITS: 4
+
+
+DATASET:
+  NAME: "THUMOS14"
+  DATA_DIR: 'data/THUMOS14'
+
+  TRAIN_SPLIT: 'val'
+  VAL_SPLIT: 'test'
+  CLS_NUM: 20
+  CATEGORY_IDX: [7, 9, 12, 21, 22, 23, 24, 26, 31, 33, 36, 40, 45, 51, 68, 79, 85, 92, 93, 97]
+  CATEGORY_NAME: ['BaseballPitch','BasketballDunk','Billiards','CleanAndJerk','CliffDiving',
+                  'CricketBowling','CricketShot','Diving','FrisbeeCatch','GolfSwing',
+                  'HammerThrow','HighJump','JavelinThrow','LongJump','PoleVault',
+                  'Shotput','SoccerPenalty','TennisSwing','ThrowDiscus','VolleyballSpiking']
+  GT_FILE: 'lib/dataset/materials_THUMOS14/gt_thumos14.json'
+  NUM_SEGMENTS: 750
+
+NETWORK:
+  FEAT_DIM: 2048
+  TOPK_K_R: 0.125
+  TOPK_K_R_FOR_LOSS : 0.125
+  CASMODULE_DROPOUT: 0.7
+  TH_SIMILAR_MIN: 0.5
+  TH_DIFFERENT_MAX: 0.1
+
+TRAIN:
+  LR: 0.0001
+  BETAS: [0.9, 0.999]
+  WEIGHT_DECAY: 0.0005
+  BATCH_SIZE: 16
+  EPOCH_NUM: 40
+  SPARSITY_COEF: 0.1
+  LR_DECAY_EPOCHS: []
+  LR_DECAY_FACTOR: 0.1
+  LOSS_CAS_COEF: 1
+  C_LOSS_NORM: 0.0001
+  C_LOSS_EMBEDDING : 0.8
+  C_LOSS_TOPK_BG: 1
+
+TEST:
+  BATCH_SIZE: 1
+  EVAL_INTERVAL: 1
+  NMS_THRESHOLD: 0.55
+  CLS_SCORE_TH: 0.25
+  ACT_THRESH_MIN: 0.0
+  ACT_THRESH_MAX: 0.25
+  ACT_THRESH_STEP: 0.025
+  OUTER_LAMBDA: 0.25
+  CONF_GAMMA: 0.2
+  IOU_TH: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+  VIDEOS_25FPS: ['video_validation_0000311', 'video_validation_0000413', 'video_validation_0000419',
+                 'video_validation_0000420', 'video_validation_0000484', 'video_validation_0000666',
+                 'video_test_0000950', 'video_test_0001058', 'video_test_0001195',
+                 'video_test_0001255', 'video_test_0001459']
+  VIDEOS_24FPS: ['video_test_0001207']
+
+
+CUDNN:
+  BENCHMARK: False
+  DETERMINISTIC: True
+  ENABLE: True
