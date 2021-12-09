@@ -1,6 +1,6 @@
 # Background-Click Supervision for Temporal Action Localization
 
-This repository is the official implementation of BackTAL. In this work, we study the temporal action localization under background-click supervision, and find the performance bottleneck of the existing approaches mainly comes from the background errors. Thus, we convert existing action-click supervision to the background-click supervision and develop a novel method, called BackTAL. Extensive experiments on three benchmarks are conducted, which demonstrate the high performance of the established BackTAL and the rationality of the proposed background-click supervision.
+This repository is the official implementation of BackTAL. In this work, we convert existing action-click supervision to the background-click supervision and develop a novel method, called BackTAL. Paper from [arXiv](https://arxiv.org/abs/2111.12449) or [IEEE](https://ieeexplore.ieee.org/document/9633199).
 
 ![Illustrating the architecture of the proposed BackTAL](BackTAL.png)
 
