@@ -15,7 +15,7 @@ from config.default import config as cfg
 from config.default import update_config
 import pprint
 from models.network import Network
-from dataset.dataset import WtalDataset
+from dataset.dataset import BackTALDataset
 from core.train_eval import evaluate
 from core.functions import prepare_env, evaluate_mAP
 from utils.utils import load_weights
@@ -56,7 +56,7 @@ def main():
     # prepare running environment for the whole project
     prepare_env(cfg)
 
-    val_dset = WtalDataset(cfg, cfg.DATASET.VAL_SPLIT)
+    val_dset = BackTALDataset(cfg, cfg.DATASET.VAL_SPLIT)
     val_loader = DataLoader(val_dset, batch_size=cfg.TEST.BATCH_SIZE, shuffle=False,
                             num_workers=cfg.BASIC.WORKERS, pin_memory=cfg.BASIC.PIN_MEMORY)
 
